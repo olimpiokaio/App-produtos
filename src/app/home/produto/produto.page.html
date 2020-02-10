@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>produto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/novo-produto">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-col size="12" size-sm="8" offset-sm="2">
+      <ion-list>
+        
+        <ion-item-sliding *ngFor="let produto of produtos" #slidingItem>
+          <!-- componente slidingItem -->
+          <ion-item>
+              <ion-thumbnail slot="start">
+                <ion-img [src]="produto.imageUrl"></ion-img>
+              </ion-thumbnail>
+              <ion-label>
+                <h1>{{produto.nome}}</h1>
+                <div class="offer-details">
+                  <p>{{produto.preco | currency: 'R$'}}</p>
+                </div>
+              </ion-label>
+            </ion-item>
+            <!-- componente slidingItem fim -->
+          <ion-item-options>
+            <ion-item-option side="and" color="warning" (click)="editarProduto(produto.id, slidingItem)">
+              <ion-icon name="create" slot="icon-only"></ion-icon>
+            </ion-item-option>
+            <ion-item-option side="and" color="danger" (click)="deletarProduto(produto.id, slidingItem)">
+              <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+
+      </ion-list>
+    </ion-col>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/produto"></ion-back-button>
+    </ion-buttons>
+    <ion-title>editar-produto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isLoading" text-center>
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+  <form [formGroup]="form" *ngIf="!isLoading">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input type="text" formControlName="nome" clearInput>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">categoria</ion-label>
+            <ion-select formControlName="categoria">
+              <ion-select-option *ngFor="let categoria of categorias">{{categoria.nome}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">marca</ion-label>
+            <ion-select formControlName="marca">
+              <ion-select-option *ngFor="let marca of marcas">{{marca.nome}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Preço</ion-label>
+            <ion-input type="number" clearInput formControlName="preco" clearInput>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-sm="3" text-center>
+          <div class="picker">
+              <ion-img
+                role="button"
+                class="image"
+                (click)="takePicture()"
+                [src]="imageUrl"
+                *ngIf="imageUrl"
+              ></ion-img>
+            </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-sm="3">
+          <ion-button 
+            (click)="atualizarProduto()" 
+            color="primary"
+            expand="block"
+            size="default"
+            [disabled]="!form.valid"
+          >
+            <ion-icon slot="start" name="checkmark"></ion-icon>
+            salvar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+  </form>
+</ion-content>

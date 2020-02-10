@@ -1,0 +1,7 @@
+{
+  "appId": "io.projetoAppProdutos.starter",
+  "appName": "Produtos",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

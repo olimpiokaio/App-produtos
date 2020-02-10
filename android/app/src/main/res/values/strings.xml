@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Produtos</string>
+    <string name="title_activity_main">Produtos</string>
+    <string name="package_name">io.projetoAppProdutos.starter</string>
+    <string name="fileprovider_authority">io.projetoAppProdutos.starter.fileprovider</string>
+    <string name="custom_url_scheme">io.projetoAppProdutos.starter</string>
+</resources>
